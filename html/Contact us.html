@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>የደንበኞች አስተያየት መስጫ ገጽ </title>
+  <link rel="stylesheet" href="../css/Contact us.css">
+  <link rel="stylesheet" href="../css/home.css">
+  <script src="../js/estimator_committee.js"></script>
+
+</head>
+<body>
+  <div class="top_navigation">
+    <ul>
+      <li><img src="../images/home.png" width="140px" height="80px" class="h_img"></li>
+      <li><a href="Home.html">መነሻ ገጽ</a></li>
+      <li><a href="about us.html">ስለ እኛ</a></li>
+      <li><a class="active" href="#">አስተያየት</a></li>
+      <li><a href="news.html">ማስታዎቂያዎች</a></li>
+      <li><a href="rules and regulations.html">ህጎችና ደንቦች</a></li>
+      <li id="log"><a href="login.html">ይግቡ</a></li>
+    </ul>
+  </div>
+  <form class="modal-content" action="../phps/Contact us.php">
+    <div class="container">
+      <center> <h1>እኛን ለማግኘት ይህን ቅጽ ይሙሉ  </h1></center>
+      <label for="lname"><b>ሙሉ ስም </b></label>
+      <input type="text" placeholder="ሙሉ ስም ያስገቡ" name="cf_name" required>
+      <label for="lname"><b>ኢሜይል </b></label>
+      <input type="email" placeholder="ኢሜይል ያስገቡ" name="c_email" required><br>
+      <label for="lname"><b>የይለፍ ቃል</b></label>
+      <input type="password" placeholder="የይለፍ ቃል ያስገቡ" name="c_password" required>
+      <label for="lname"><b>ስልክ ቁጥር  </b></label>
+      <input type="number" placeholder="ስልክ ቁጥር ያስገቡ" name="c_phone" required>
+      <label for="lname"><b>ሀሳብዎን ከዚህ ላይ ይጻፉ </b></label> <br><br>
+      <textarea name="c_textarea" id="txtarea" cols="30" rows="10"></textarea>
+      <div class="clearfix">
+      <button type="submit" name="yilaku" class="send">ይላኩ </button>   
+      </div>
+    </div>
+  </form>
+<!-- </div> -->
+<div class="footer">
+  <div class="footer_list">
+    <ul>
+      <p style="margin-right: 50px;color:white;font-size: 50px;"><b>ለበለጠ መረጃ</b></p>
+      <a href="https://www.facebook.com/profile.php?id=100064799525991"> <i class="fa fa-facebook " style="font-size:60px;color:blue;text-shadow:2px 2px 4px #000000;"></i></a>
+      <a href="https://www.telegram.com/"> <i class="fa fa-telegram " style="font-size:60px;color:lightskyblue;text-shadow:2px 2px 4px #000000;"></i></a>
+      <a href="https://www.youtube.com/"> <i class="fa fa-youtube-square " style="font-size:60px;color:darkred;text-shadow:2px 2px 4px #000000;"></i></a>
+      <a href="https://www.gmail.com/"> <i class="fa fa-envelope " style="font-size:60px;color:green;text-shadow:2px 2px 4px #000000;"></i></a>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

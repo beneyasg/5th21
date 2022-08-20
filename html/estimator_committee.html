@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>የገማቾች ገጽ </title>
+  <link rel="stylesheet" href="../css/estimator_committee.css">
+  <script src="../js/estimator_committee.js"></script>
+</head>
+<body>
+<!--<button class="gemachich" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">ገማቾችን መዝግብ </button> -->
+
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <form class="modal-content" action="../phps/estimator_committee.php" method="post">
+    <div class="container">
+      <center> <h1> ገማቾችን ለመመዝገብ ይህን ቅጽ ይሙሉ  </h1></center>
+      <label for="lname"><b>የገማች መለያ(ID)</b></label>
+      <input type="text" placeholder="መለዮዎን ያስገቡ" name="gemach_ID" required>
+      <label for="lname"><b>ስም ከነአያት</b></label>
+      <input type="text" placeholder="ሙሉ ስም ያስገቡ" name="es_fname" required>
+      <label for="lname"><b>ዕድሜ</b></label>
+      <input type="number" placeholder="ዕድሜ ያስገቡ" name="es_age" required><br>
+      <label for="lname"><b>ፆታ</b> </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <label for="wend"><b>ወንድ</b></label>
+      <input type="radio" name="es_radio" value="ወ">&nbsp;&nbsp;&nbsp;&nbsp;
+      <label for="set"><b>ሴት</b></label>
+        <input type="radio" name="es_radio" value="ሴ">
+       <br><br>
+      <label for="lname"><b>ዜግነት</b></label>
+      <input type="text" placeholder="ዜግነት ያስገቡ" name="es_nationality" required>
+
+      <label for="lname"><b>መለያ ስም</b></label>
+      <input type="text" placeholder="መለያ ስም ያስገቡ" name="es_username" required>
+
+      <label for="lname"><b>የይለፍ ቃል</b></label>
+      <input type="password" placeholder="የይለፍ ቃል ያስገቡ" name="es_password" required>
+      <label for="lname"><b>ኢሜይል</b></label>
+      <input type="email" placeholder="ኢሜይል ያስገቡ" name="es_email" required>
+<br>
+      <label for="lname"><b>አድራሻ</b></label>
+      <input type="text" placeholder="አድራሻ ያስገቡ" name="es_address" required>
+
+      <label for="lname"><b>ስልክ ቁጥር  </b></label>
+      <input type="number" placeholder="ስልክ ቁጥር ያስገቡ" name="es_phone" required>
+      
+      <label for="lname"><b>የቡድን መለያ ስም </b></label>
+      <input type="text" placeholder="የቡድን መለያ ስም" name="es_group_name" required>
+
+      <label for="lname"><b>የአባላቶች ብዛት </b></label>
+      <input type="number" placeholder="የአባላቶች ብዛት " name="es_mem_no" required>
+      <label for="lname"><b>የተመዘገበበት ቀን </b></label>&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="date" placeholder="ቀን ያስገቡ" name="est_reg_date" required><br><br>
+      <div class="clearfix">
+        <button type="submit" name="register" class="signupbtn">መዝግብ </button>
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">ሰርዝ</button>
+       
+      </div>
+    </div>
+  </form>
+</div>
+  
+</body>
+</html>

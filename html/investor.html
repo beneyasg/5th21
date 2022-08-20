@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>የአስለቃቂዎች/የኢንቨስተሮች ገጽ </title>
+  <link rel="stylesheet" href="../css/investor.css">
+  <script src="../js/estimator_committee.js"></script>
+</head>
+<body>
+
+<!-- <button class="gemachich" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">አስለቃቂዎችን/ኢንቨስተሮችን መዝግብ </button> -->
+
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <form class="modal-content" action="../phps/investor.php" method="post">
+    <div class="container">
+      <center> <h1> አስለቃቂዎችን/ኢንቨስተሮችን ለመመዝገብ ይህን ቅጽ ይሙሉ  </h1></center>
+      <label for="iv_id"><b>የአስለቃቂው አይዲ</b></label>
+      <input type="text" id="inv_id" placeholder="አይዲ ያስገቡ" name="inv_ID" required>
+      <label for="lname"><b>የአስለቃቂው ስም</b></label>
+      <input type="text" placeholder="ሙሉ ስም ያስገቡ" name="inv_fname" required>
+      <label for="lname"><b>መሬቱን የጠየቀበት ቀን </b></label>&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="date" placeholder="መሬቱን የጠየከበት ቀን ያስገቡ" name="inv_asked_date" required><br><br>
+      <label for="lname"><b>መሬቱን የጠየቀበት ምክኒያት</b></label>
+      <input type="text" placeholder="መሬቱን የጠየቀበት ምክኒያት ያስገቡ" name="inv_reason" required>
+      <label for="lname"><b>ህጋዊ ማስረጃ </b></label>&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="file" placeholder="ህጋዊ ማስረጃ ያስገቡ" name="inv_document" required><br><br>
+      <label for="lname"><b>መለያ ስም</b></label>
+      <input type="text" placeholder="መለያ ስም ያስገቡ" name="inv_username" required>
+      <label for="lname"><b>የይለፍ ቃል</b></label>
+      <input type="password" placeholder="የይለፍ ቃል ያስገቡ" name="inv_password" required>
+      <label for="lname"><b>ኢሜይል</b></label>
+      <input type="email" placeholder="ኢሜይል ያስገቡ" name="inv_email" required>
+      <label for="lname"><b>ስልክ ቁጥር  </b></label>
+      <input type="number" placeholder="ስልክ ቁጥር ያስገቡ" name="inv_phone" required>
+      <label for="lname"><b>የተመዘገበበት ቀን </b></label>&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="date" placeholder="መሬቱን የጠየከበት ቀን ያስገቡ" name="inv_reg_date" required><br><br>
+      <div class="clearfix">
+        <button type="submit" class="signupbtn" name="inv_register">መዝግብ </button>
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">ሰርዝ</button>
+       
+      </div>
+    </div>
+  </form>
+</div>
+  
+</body>
+</html>

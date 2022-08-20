@@ -1,0 +1,964 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <script src="../js/calculate.js"></script>
+  <link rel="stylesheet" href="../css/calculate.css">
+  <title>የካሳ ማስያ ገጽ</title>
+</head>
+
+<body>
+  <form action="../phps/calculateall.php" target="_blank" method="post">
+  <div data-role="page" id="pageone">
+    <center>
+      <h1>የካሳ አይነቶች  </h1>
+    </center>
+
+    <div data-role="main" class="ui-content">
+      <div data-role="collapsible" id="nibret kasa">
+        <h1>የንብረት ካሳ</h1>
+        <div data-role="collapsible">
+          <h1>የቤት ካሳ</h1>
+          <div data-role="collapsible">
+            <h1>የቤት አይነት</h1>
+            <label class="container">የሳር ቤት
+              <input type="radio" value="የሳር ቤት" name="bet_aynet_radio">
+            </label>
+            <label class="container">የእንጨት ቤት
+              <input type="radio" value="የእንጨት ቤት" name="bet_aynet_radio">
+            </label>
+            <label class="container">የድንጋይ ቤት
+              <input type="radio" value="የድንጋይ ቤት " name="bet_aynet_radio">
+            </label>
+            <label class="container">የጡብ/የሸክላ ቤት
+              <input type="radio" value="የጡብ/የሸክላ ቤት" name="bet_aynet_radio">
+            </label>
+            <label class="container">የብሎኬት ቤት
+              <input type="radio" value="የብሎኬት ቤት" name="bet_aynet_radio">
+            </label>
+            <label id="001">የባለይዞታው አይዲ</label>
+            <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="owner_ID_1001" value="0">
+          
+            <button type="button" onclick="bet_aynet_js()">ያረጋግጡ</button>
+            <label id="bet_aynet" style="font-size: 30px; border: 2px;">የቤት አይነት</label>
+          </div>
+
+          <div data-role="collapsible">
+            <h1>የወቅቱ የግንባታ ወጪ</h1>
+            <div>
+              <div data-role="collapsible">
+                <h1>ከመሬት በታች ስራ ወጪ በብር</h1>
+                <label id="l1">ለመሰረት ቁፋሮ ወጪ በብር</label>
+                <input type="number" id="lemeseret_kufarod1" name="lemeserete_kufaro001" placeholder="ለመሰረት ቁፋሮ ወጪ በብር.." value="0">
+                <label id="l2">ለድንጋይ ወጪ በብር</label>
+                <input type="number" id="ledingay_wochid2" name="lemeserete_kufaro002" placeholder="ለድንጋይ ወጪ በብር.." value="0">
+                <label id="l3">ለባለሙያ ወጪ በብር</label>
+                <input type="number" id="undergroun_balemuyad3" name="lemeserete_kufaro003" placeholder="ለባለሙያ ወጪ በብር.." value="0">
+                <button type="button" onclick="calculate()">ይደምሩ</button>
+                <!-- <button onclick="calculate()">አስላ </button> -->
+                <label id="kemeretbetach_wochi_dimrd4" style="font-size: 30px; border: 2px;">ከመሬት በታች ስራ ወጪ ድምር
+                  በብር:__</label>
+                  <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+                  <label id="lv002">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+                  <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="lemeserete_kufaro004">
+                  <label id="lv003">የባለይዞታው አይዲ</label>
+                  <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="lemeserete_kufaro005">
+              </div>
+              <div data-role="collapsible">
+                <h1>የውኃ ልክ ስራ ወጪ በብር</h1>
+                <label id="l4">የድንጋይ ብዛት በጋሪ ወይም በሜትር ኩብ </label>
+                <input type="number" id="yedngay_bizatd5" name="yewuha_lik_001" placeholder="የድንጋይ ብዛት በጋሪ ወይም በሜትር ኩብ.."
+                  value="0">
+                <label id="l5">የአንድ ጋሪ ወይም ሜትር ኩብ ዋጋ በብር </label>
+                <input type="number" id="yedngay_wagad6" name="yewuha_lik_002" placeholder="የአንድ ጋሪ ወይም ሜትር ኩብ ዋጋ በብር.."
+                  value="0">
+                <label id="l6">የአሸዋ ወጪ በብር</label>
+                <input type="number" id="yeashewa_wochid7" name="yewuha_lik_003" placeholder="የአሸዋ ወጪ በብር.." value="0">
+                <label id="l7">የሲሚንቶ ወጪ በብር</label>
+                <input type="number" id="yesiminto_wochid8" name="yewuha_lik_004" placeholder="የሲሚንቶ  ወጪ በብር.." value="0">
+                <label id="l8">የሰራተኛ ወጪ በብር</label>
+                <input type="number" id="yewuhalik_serategna_wochid9" name="yewuha_lik_005" placeholder="የሰራተኛ ወጪ በብር.."
+                  value="0">
+              
+                <button type="button" onclick="calculate()">ይደምሩ </button>
+                <label id="yewuhalik_wochi_dimrd10" style="font-size: 30px; border: 2px;">የውኃ ልክ ስራ ወጪ ድምር በብር:__</label>
+                  <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+                  <label id="lv003">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+                  <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="dimr_masigebiya001">
+                  <label id="lv004">የባለይዞታው አይዲ</label>
+                  <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="owner_ID_1003">
+              </div>
+              <div data-role="collapsible">
+                <h1>የግድግዳ ስራ ወጪ በብር</h1>
+                <label id="l9">አፈር ማስቆፈሪያ ወጪ በብር</label>
+                <input type="number" id="afer_maskoferia_wochid11" name="yegidigda001" placeholder="አፈር ማስቆፈሪያ ወጪ በብር.."
+                  value="0">
+                <label id="l10">ማስቦኪያ ወጪ በብር</label>
+                <input type="number" id="masbokia_wochid12" name="yegidigda002" placeholder="ማስቦኪያ ወጪ በብር.." value="0">
+                <label id="l11">ማስመረጊያ ወጪ በብር</label>
+                <input type="number" id="masmeregia_wochid13" name="yegidigda003" placeholder="ማስመረጊያ ወጪ በብር.." value="0">
+                
+                <button type="button" onclick="calculate()">ይደምሩ </button>
+                <label id="yegidgidasira_wochi_dimrd14" style="font-size: 30px; border: 2px;">የግድግዳ ስራ ወጪ ድምር
+                  በብር:__</label>
+                  <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+                  <label id="lv004">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+                  <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="yegidigda004">
+                  <label id="lv005">የባለይዞታው አይዲ</label>
+                  <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="yegidigda005">
+              </div>
+
+              <div data-role="collapsible">
+                <h1>የጣራ ስራ ወጪ በብር</h1>
+                <label id="l12">ለቆርቆሮ ወጪ በብር</label>
+                <input type="number" id="lekorkoro_wochid15" name="letara001" placeholder="ለቆርቆሮ ወጪ በብር.." value="0">
+                <label id="l13">ለሚስማር ወጪ በብር</label>
+                <input type="number" id="lemismar_wochid16" name="letara002" placeholder="ለሚስማር ወጪ በብር.." value="0">
+                <label id="l14">ለቀን ሰራተኛ ወጪ በብር</label>
+                <input type="number" id="lekenserategna_wochid17" name="letara003" placeholder="ለቀን ሰራተኛ ወጪ በብር.."
+                  value="0">
+                <label id="l15">ለባለሙያ ወጪ በብር</label>
+                <input type="number" id="letarasira_balemuya_wochid18" name="letara004" placeholder="ለባለሙያ ወጪ በብር.."
+                  value="0">
+                  
+                <button type="button" onclick="calculate()">ይደምሩ </button>
+                <label id="yetarasira_wochi_dimrd19" style="font-size: 30px; border: 2px;">የጣራ ስራ ወጪ ድምር በብር:__</label>
+                <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+                <label id="lv005">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+                <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="letara005">
+                <label id="lv006">የባለይዞታው አይዲ</label>
+                <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="owner_ID_1005">
+              </div>
+              <div data-role="collapsible">
+                <h1>የበርና የመስኮት ወጪ በብር</h1>
+                <label id="l16">ለበር መግዣ ወይም ማሰሪያ ወጪ በብር </label>
+                <input type="number" id="lebernameskot_wochid20" name="berna_meskot001" placeholder="ለበር መግዣ ወይም ማሰሪያ ወጪ በብር.."
+                  value="0">
+                <label id="l17">ለባለሙያ ወይም ለመገጣጠሚያ ወጪ በብር</label>
+                <input type="number" id="leberinameskot_balemuya_wochid21" name="berna_meskot002"
+                  placeholder="ለባለሙያ ወይም ለመገጣጠሚያ ወጪ በብር.." value="0">
+                  
+                <button type="button" onclick="calculate()">ይደምሩ </button>
+                <label id="yeberinameskot_wochi_dimrd22" style="font-size: 30px; border: 2px;">የበርና የመስኮት ወጪ ድምር
+                  በብር:__</label>
+                <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+                <label id="lv006">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+                <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="berna_meskot003">
+                <label id="lv007">የባለይዞታው አይዲ</label>
+                <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="berna_meskot004">
+              </div>
+              <div data-role="collapsible">
+                <h1>የመስታወት ወጪ በብር</h1>
+                <label id="l18">ለመስታወት መግዣ ወጪ በብር </label>
+                <input type="number" id="lemestawet_wochid23" name="yemestawot001" placeholder="ለመስታወት መግዣ ወጪ በብር.." value="0">
+                <label id="l19">ለባለሙያ ወይም ለመገጣጠሚያ ወጪ በብር</label>
+                <input type="number" id="lemestawet_balemuya_wochid24" name="yemestawot002"
+                  placeholder="ለባለሙያ ወይም ለመገጣጠሚያ ወጪ በብር.." value="0">
+                
+                <button type="button" onclick="calculate()">ይደምሩ </button>
+                <label id="yemestawet_wochi_dimrd25" style="font-size: 30px; border: 2px;">የመስታወት ወጪ በብር ድምር በብር:__</label>
+                <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+                <label id="lv007">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+                <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="yemestawot003">
+                <label id="lv008">የባለይዞታው አይዲ</label>
+                <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="yemestawot004">
+              </div>
+
+              <div data-role="collapsible">
+                <h1> የእንጨት ወጪ በብር</h1>
+                <label id="l20">የማገር ዋጋ/ወጪ በብር </label>
+                <input type="number" id="lenchet_mager_wochid26" name="yechet001" placeholder="የማገር ዋጋ/ወጪ በብር.." value="0">
+                <label id="l21">የወራጅ ዋጋ/ወጪ በብር </label>
+                <input type="number" id="lenchet_weraji_wochid27" name="yechet002" placeholder="የወራጅ ዋጋ/ወጪ በብር.."
+                  value="0">
+                <label id="l22">የቋሚ ዋጋ/ወጪ በብር </label>
+                <input type="number" id="lekuami_enchet_wochid28" name="yechet003" placeholder="ለመስታወት መግዣ ወጪ በብር.."
+                  value="0">
+                <label id="l23">የተፈላጭ ዋጋ/ወጪ በብር </label>
+                <input type="number" id="lenchet_tefelach_wochid29" name="yechet004" placeholder="ለመስታወት መግዣ ወጪ በብር.."
+                  value="0">
+                  
+                <button type="button" onclick="calculate()">ይደምሩ </button>
+                <label id="yenchet_wochi_dimrd30" style="font-size: 30px; border: 2px;"> የእንጨት ወጪ በብር ድምር በብር:__</label>
+                <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+                <label id="lv008">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+                <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="yechet005">
+                <label id="lv009">የባለይዞታው አይዲ</label>
+                <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="yechet006">
+              </div>
+
+              <div data-role="collapsible">
+                <h1>የግንባታ ድምር ወጪ</h1>
+                <button type="button" onclick="calculate()">ይደምሩ </button>
+                <label id="yeginbatawochi_dimrd31" style="font-size: 30px; border: 2px;">የግንባታ ድምር ወጪ:__</label>
+              </div>
+            </div>
+
+          </div>
+          <div data-role="collapsible">
+            <h1>የቀሪ ዘመን የመሬት ሊዝ ተመላሽ ክፍያ/ትክ ቦታ ካልተሰጠው በብር</h1>
+            <input type="number" id="keri_zemen_kifiyad32" name="yekeri_zemen001"
+              placeholder="የቀሪ ዘመን የመሬት ሊዝ ተመላሽ ክፍያ/ትክ ቦታ ካልተሰጠው በብር.." value="0">
+              <label id="lv010">የባለይዞታው አይዲ</label>
+              <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="yekeri_zemen002">
+          </div>
+
+          <div data-role="collapsible">
+            <h1>የማስዋቢያ ስራ</h1>
+            <div>
+              <div data-role="collapsible">
+                <h1>የግቢ ንጣፍ ስራ በብር</h1>
+                <label id="l24">የእምነበረድ ዋጋ/ወጪ በብር </label>
+                <input type="number" id="yemnebered_wochid33" name="yegibi_nitaf001" placeholder="የእምነበረድ ዋጋ/ወጪ በብር.." value="0">
+                <label id="l25">የአሸዋ ዋጋ/ወጪ በብር </label>
+                <input type="number" id="ygibi_ashewa_wochid34" name="yegibi_nitaf002" placeholder="የአሸዋ ዋጋ/ወጪ በብር.." value="0">
+                <label id="l26">የጠጠር ዋጋ/ወጪ በብር </label>
+                <input type="number" id="yegibi_teter_wochid35" name="yegibi_nitaf003" placeholder="የጠጠር ዋጋ/ወጪ በብር.." value="0">
+                <label id="l27">የጉልበት ወጪ በብር </label>
+                <input type="number" id="yegibi_gulbet_wochid36" name="yegibi_nitaf004" placeholder="የጉልበት ወጪ በብር.." value="0">
+                <label id="l28">የባለሙያ ወጪ በብር </label>
+                <input type="number" id="yegibi_balemuya_wochid37" name="yegibi_nitaf005" placeholder="የባለሙያ ወጪ በብር.." value="0">
+                
+                <button type="button" onclick="calculate()">ይደምሩ </button>
+                <label id="yegibintaf_wochi_dimrd38" style="font-size: 30px; border: 2px;">የግቢ ንጣፍ ስራ ወጪ ድምር በብር:__</label>
+                <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+                <label id="lv009">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+                <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="yegibi_nitaf006">
+                <label id="lv011">የባለይዞታው አይዲ</label>
+                <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="yegibi_nitaf007">
+              </div>
+
+              <div data-role="collapsible">
+                <h1>የሴፍቲ ታንከር ስራ በብር</h1>
+                <label id="l29">የመግዣ ወጪ በብር </label>
+                <input type="number" id="safty_tanker_megzad39" name="yesefti_tanker001" placeholder="የመግዣ ወጪ በብር.." value="0">
+                <label id="l30">የባለሙያ ወጪ በብር </label>
+                <input type="number" id="safty_tanker_balemuyad40" name="yesefti_tanker002" placeholder="የባለሙያ ወጪ በብር.." value="0">
+                
+                <button type="button" onclick="calculate()">ይደምሩ </button>
+                <label id="yesafty_tanker_wochi_dimrd41" style="font-size: 30px; border: 2px;">የሴፍቲ ታንከር ስራ ወጪ ድምር
+                  በብር:__</label>
+                <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+                <label id="lv010">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+                <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="yesefti_tanker003">
+                <label id="lv012">የባለይዞታው አይዲ</label>
+                <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="yesefti_tanker004">
+              </div>
+              <div data-role="collapsible">
+                <h1>የቀለም ስራ በብር</h1>
+                <label id="l31"> የቀለም መግዣ ወጪ በብር </label>
+                <input type="number" id="yekelem_megzad42" name="yekelem001" placeholder="የቀለም መግዣ ወጪ በብር.." value="0">
+                <label id="l32">የባለሙያ/ማስቀቢያ ወጪ በብር </label>
+                <input type="number" id="yekelem_balemuyad43" name="yekelem002" placeholder="የባለሙያ/ማስቀቢያ ወጪ በብር.." value="0">
+                
+                <button type="button" onclick="calculate()">ይደምሩ </button>
+                <label id="yekelem_wochi_dimrd44" style="font-size: 30px; border: 2px;">የቀለም ስራ ወጪ ድምር በብር:__</label>
+                <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+                <label id="lv011">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+                <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="yekelem003">
+                <label id="lv013">የባለይዞታው አይዲ</label>
+                <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="yekelem004">
+              </div>
+              <div data-role="collapsible">
+                <h1>የበረንዳ ስራ </h1>
+                <label id="l33"> የእንጨት ዋጋ/ወጪ በብር </label>
+                <input type="number" id="yeberenda_enchet_wochid45" name="yeberenda001" placeholder="የእንጨት ዋጋ/ ፟ወጪ በብር.."
+                  value="0">
+                <label id="l34"> የብረት ዋጋ/ወጪ በብር </label>
+                <input type="number" id="yeberenda_biret_wochid46" name="yeberenda002" placeholder="የብረት ዋጋ/ ፟ወጪ በብር.."
+                  value="0">
+                <label id="l35"> የእምነበረድ ዋጋ/ወጪ በብር </label>
+                <input type="number" id="yeberenda_emneberd_wochid47" name="yeberenda003" placeholder="የእምነበረድ ዋጋ/ ፟ወጪ በብር.."
+                  value="0">
+                <label id="l36"> የባለሙያ ወጪ በብር </label>
+                <input type="number" id="yeberenda_balemuya_wochid48" name="yeberenda004" placeholder="የባለሙያ ፟ወጪ በብር.."
+                  value="0">
+                  
+                <button type="button" onclick="calculate()">ይደምሩ </button>
+                <label id="yeberendasira_wochi_dimrd49" style="font-size: 30px; border: 2px;">የበረንዳ ስራ ወጪ ድምር
+                  በብር:__</label>
+                <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+                <label id="lv012">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+                <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="yeberenda005">
+                <label id="lv014">የባለይዞታው አይዲ</label>
+                <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="yeberenda006">
+              </div>
+
+              <button type="button" onclick="calculate()">ይደምሩ</button>
+              <label id="yemaswabia_dimrd50" style="font-size: 30px; border: 2px;">የማስዋቢያ ስራ ድምር በብር:__</label>
+            </div>
+          </div>
+
+          <div data-role="collapsible">
+            <h1>የአገልግሎት ወጪ</h1>
+            <div>
+              <div data-role="collapsible">
+                <h1>ለመብራት ስራ በብር</h1>
+                <label id="l37"> የኤሌክትሪክ ገመድ ዋጋ/ወጪ በብር </label>
+                <input type="number" id="electric_gemed_wochid51" name="lemebrate001" placeholder="የኤሌክትሪክ ገመድ ዋጋ/ወጪ በብር.."
+                  value="0">
+                <label id="l38"> የማብሪያና ማጥፊያ ዋጋ/ወጪ በብር </label>
+                <input type="number" id="mabriyana_matfiya_wochid52" name="lemebrate002" placeholder="የማብሪያና ማጥፊያ ዋጋ/ወጪ በብር.."
+                  value="0">
+                <label id="l39"> የአምፖል ዋጋ/ወጪ በብር </label>
+                <input type="number" id="ampol_wochid53" name="lemebrate003" placeholder="የአምፖል ዋጋ/ወጪ በብር.." value="0">
+                <label id="l40"> የባለሙያ ወጪ በብር </label>
+                <input type="number" id="lemebrat_balemuya_wochid54" name="lemebrate004" placeholder="የባለሙያ ወጪ በብር.."
+                  value="0">
+                 
+                <button type="button" onclick="calculate()">ይደምሩ </button>
+                <label id="lemebrat_sira_wochi_dimrd55" style="font-size: 30px; border: 2px;">ለመብራት ስራ ወጪ ድምር
+                  በብር:__</label>
+                <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+                <label id="lv013">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+                <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="lemebrate005">
+                <label id="lv015">የባለይዞታው አይዲ</label>
+                <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="lemebrate006">
+              </div>
+
+              <div data-role="collapsible">
+                <h1>ለቧንቧ ውሀ ስራ በብር</h1>
+                <label id="l41"> የዉኃ ማስተላለፊያ ቱቦ ዋጋ/ወጪ በብር </label>
+                <input type="number" id="yewuha_tubo_wochid56" name="yebuwanbuwa001" placeholder="የዉኃ ማስተላለፊያ ቱቦ ዋጋ/ወጪ በብር.."
+                  value="0">
+                <label id="l42"> የቧንቧ እቃዎች ዋጋ/ወጪ በብር </label>
+                <input type="number" id="buanbua_eqawoch_wochid57" name="yebuwanbuwa002" placeholder="የቧንቧ እቃዎች ዋጋ/ወጪ በብር.."
+                  value="0">
+                <label id="l43"> የባለሙያ ወጪ በብር </label>
+                <input type="number" id="lewuha_balemuya_wochid58" name="yebuwanbuwa003" placeholder="የባለሙያ ወጪ በብር.." value="0">
+                
+                <button type="button" onclick="calculate()">ይደምሩ </button>
+                <label id="lebuanbua_wuha_wochi_dimrd59" style="font-size: 30px; border: 2px;">ለቧንቧ ውሀ ወጪ ድምር
+                  በብር:__</label>
+                <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+                <label id="lv014">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+                <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="yebuwanbuwa004">
+                <label id="lv016">የባለይዞታው አይዲ</label>
+                <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="yebuwanbuwa005">
+              </div>
+
+              <div data-role="collapsible">
+                <h1>ለስልክ ስራ በብር</h1>
+                <label id="l44"> የስልክ ስራ ወጪ በብር </label>
+                <input type="number" id="lesilk_wochid60" name="yesilk001" placeholder="የስልክ ስራ ወጪ በብር.." value="0">
+                <label id="016">የባለይዞታው አይዲ</label>
+                <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="yesilk002">
+              </div>
+
+              <div data-role="collapsible">
+                <h1>ለማዕድ ቤት ስራ በብር</h1>
+                <label id="l45"> የሲንክ ዋጋ/ወጪ በብር </label>         
+                <input type="number" id="yemadbet_sink_wochid61" name="yemadbet001" placeholder="የሲንክ ዋጋ/ወጪ በብር.." value="0">
+                <label id="l46"> የባለሙያ ወጪ በብር </label>
+                <input type="number" id="yemadbet_balemuya_wochid62"placeholder="የባለሙያ ወጪ በብር.." name="yemadbet002" value="0">
+                
+                <button type="button" onclick="calculate()">ይደምሩ </button>
+                <label id="yemead_bet_wochi_dimrd63" style="font-size: 30px; border: 2px;">ለማዕድ ቤት ስራ ወጪ ድምር በብር:__ </label>
+                <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+                <label id="lv015">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+                <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="yemadbet003">
+                <label id="lv017">የባለይዞታው አይዲ</label>
+                <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="yemadbet004">
+              </div>
+              <div data-role="collapsible">
+                <h1>ለሻወር ቤት ስራ በብር</h1>
+                <label id="l47"> የዉኃ ቱቦ ዋጋ/ወጪ በብር </label>
+                <input type="number" id="yeshawer_tubo_wochid64" name="yeshaworbet001" placeholder="የዉኃ ቱቦ ዋጋ/ወጪ በብር.."
+                  value="0">
+                <label id="l48"> የሻወር ቤት እቃዎች ወጪ በብር </label>
+                <input type="number" id="shawer_eqawoch_wochid65" name="yeshaworbet002" placeholder="የሻወር ቤት እቃዎች ወጪ በብር.."
+                  value="0">
+                <label id="l49"> የባለሙያ ወጪ በብር </label>
+                <input type="number" id="shawer_balemuya_wochid66" name="yeshaworbet003" placeholder="የባለሙያ ወጪ በብር.." value="0">
+                
+                <button type="button" onclick="calculate()">ይደምሩ </button>
+                <label id="yeshawer_bet_wochi_dimrd67" style="font-size: 30px; border: 2px;">ለሻወር ቤት ስራ ወጪ ድምር
+                  በብር:__</label>
+                <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+                <label id="lv016">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+                <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="yeshaworbet004">
+                <label id="lv018">የባለይዞታው አይዲ</label>
+                <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="yeshaworbet005">
+              </div>
+              <div data-role="collapsible">
+                <h1>ለሽንት ቤት ስራ በብር</h1>
+                <label id="l50"> የሽንት ቤት መቀመጫ ወጪ በብር </label>
+                <input type="number" id="shintbet_meqemecha_wochid68" name="yeshintbet001" placeholder="የሽንት ቤት መቀመጫ ወጪ በብር.."
+                  value="0">
+                <label id="l51"> የባለሙያ ወጪ በብር </label>
+                <input type="number" id="shintbet_balemuya_wochid69" name="yeshintbet002" placeholder=" የባለሙያ ወጪ በብር.."
+                  value="0">
+                  
+                <button type="button" onclick="calculate()">ይደምሩ </button>
+                <label id="yeshintbet_wochi_dimrd70" style="font-size: 30px; border: 2px;">ለሽንት ቤት ስራ ወጪ ድምር በብር:__</label>
+                <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+                <label id="lv017">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+                <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="yeshintbet003">
+                <label id="lv019">የባለይዞታው አይዲ</label>
+                <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="yeshintbet004">
+              </div>
+              <button type="button" onclick="calculate()">ይደምሩ </button>
+              <label id="yeagelglot_wochi_teklala_dimrd71" style="font-size: 30px; border: 2px;">የአገልግሎት ወጪ ጠቅላላ ድምር
+                በብር:__</label>
+                
+            </div>
+          </div>
+          <div data-role="collapsible">
+            <h1>የቤት ካሳ አጠቃላይ ድምር በብር</h1>
+            <button type="button" onclick="calculate()">ይደምሩ</button>
+            <label id="yebet_atekalay_dimrd72" style="font-size: 30px; border: 2px;">የቤት ካሳ አጠቃላይ ድምር በብር:__</label>
+          </div>
+        </div>
+        <div data-role="collapsible">
+          <h1>የአጥርና የእንስሳት በረት </h1>
+          <div data-role="collapsible">
+            <h1>የአጥር አይነት</h1>
+            <label class="container">የግንብ አጥር
+              <input type="radio" value="የግንብ አጥር" name="atir_radio001">
+            </label>
+            <label class="container">የእፅዋት አጥር
+              <input type="radio" value="የእፅዋት አጥር" name="atir_radio001">
+            </label>
+            <label class="container">የሽቦ አጥር
+              <input type="radio" value="የሽቦ አጥር " name="atir_radio001">
+            </label>
+            <label id="020">የባለይዞታው አይዲ</label>
+            <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="atir002">
+
+            <button type="button" onclick="atir_aynet_js()">ያረጋግጡ</button>
+            <label id="yeatir_ayinet" style="font-size: 30px; border: 2px;">የአጥር አይነት</label>
+          </div>
+
+          <div data-role="collapsible">
+            <h1>ተዘዋዉሮ የማይተከል አጥር </h1>
+            <label id="l52">የአጥሩ ርዝመት በሜትር </label>
+            <input type="number" id="erzmentd73" name="tezewawuro_yemayitekel_atir001" placeholder="የአጥሩ ርዝመት በሜትር.." value="0">
+            <label id="l53">የአጥሩ ቁመት በሜትር</label>
+            <input type="number" id="kumetd74" name="tezewawuro_yemayitekel_atir002" placeholder="የአጥሩ ቁመት በሜትር.." value="0">
+            <label id="l54"> የአጥሩ ወርድ በሜትር</label>
+            <input type="number" id="werdd75" name="tezewawuro_yemayitekel_atir003" placeholder="የአጥሩ ወርድ በሜትር.." value="0">
+            <label id="l55">የአጥሩ ስፋት/ይዘት በካሬ በሜትር/ሜትር ኩብ </label>
+            <input type="number" id="sfatd76" name="tezewawuro_yemayitekel_atir004" placeholder="የአጥሩ ስፋት/ይዘት በካሬ በሜትር/ሜትር ኩብ.." value="0">
+            <label id="l56">የአንድ ካሬ ሜትር/ሜትር ኩብ ዋጋ በብር</label>
+            <input type="number" id="wagad77" name="tezewawuro_yemayitekel_atir005" placeholder="የአንድ ካሬ ሜትር/ሜትር ኩብ ዋጋ በብር.." value="0">
+            <label id="l57">የጉልበት ወጭ በብር </label>
+            <input type="number" id="gulbetd78" name="tezewawuro_yemayitekel_atir006" placeholder="የጉልበት ወጭ በብር.." value="0">
+            <label id="l58">የማቴሪያል ወጪ በብር</label>
+            <input type="number" id="materiald79" name="tezewawuro_yemayitekel_atir007" placeholder="የማቴሪያል ወጪ በብር.." value="0">
+            <label id="l59">የገንዘብ ወጪ በብር</label>
+            <input type="number" id="genzebd80" name="tezewawuro_yemayitekel_atir008" placeholder="የገንዘብ ወጪ በብር.." value="0">
+            
+            <button type="button" onclick="calculate()">ይደምሩ</button>
+            <label id="tezewawuro_yemayitekel_dimrd81" style="font-size: 30px; border: 2px;">ተዘዋዉሮ የማይተከል ድምር
+              በብር:__</label>
+                <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+                <label id="lv018">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+                <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="tezewawuro_yemayitekel_atir009">
+                <label id="lv020">የባለይዞታው አይዲ</label>
+                <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="tezewawuro_yemayitekel_atir010">
+          </div>
+
+
+          <div data-role="collapsible">
+            <h1>ተዘዋዉሮ የሚተከል አጥር </h1>
+            <label id="l60">የማንሻ/የመንቀያ ወጪ በብር</label>
+            <input type="number" id="yemanshad82" name="tezewawuro_yemitekel001" placeholder="የማንሻ/የመንቀያ ወጪ በብር.." value="0">
+            <label id="l61">የማጓጓዣ ወጪ በብር</label>
+            <input type="number" id="maguaguazad83" name="tezewawuro_yemitekel002" placeholder="የማጓጓዣ ወጪ በብር.." value="0">
+            <label id="l62">የመልሶ መትከያ/ማሰሪያ ወጪ በብር</label>
+            <input type="number" id="metikeyad84" name="tezewawuro_yemitekel003" placeholder="የመልሶ መትከያ/ማሰሪያ ወጪ በብር.." value="0">
+            <label id="l63">የተጎዱ እቃዎች ወጪ በብር</label>
+            <input type="number" id="yetegodud85" name="tezewawuro_yemitekel004" placeholder="የተጎዱ እቃዎች ወጪ በብር.." value="0">
+            
+            <button type="button" onclick="calculate()">ይደምሩ</button>
+            <label id="tezewawuro_yemitekel_dimrd86" style="font-size: 30px; border: 2px;">ተዘዋዉሮ የሚተከል አጥር ድምር
+              በብር:__</label>
+                <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+                <label id="lv019">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+                <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="tezewawuro_yemitekel005">
+                <label id="lv021">የባለይዞታው አይዲ</label>
+                <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="tezewawuro_yemitekel006">
+          </div>
+
+
+          <div data-role="collapsible">
+            <h1>የእንስሳት በረት የወቅቱ የግንባታ ወጭ በብር </h1>
+            <label id="l64">የእንጨት ዋጋ/ወጪ በብር</label>
+            <input type="number" id="yensisat_enchet_wochid87" name="yesesatberet001" placeholder="የእንጨት ዋጋ/ወጪ በብር.." value="0">
+            <label id="l65">የሚስማር ወጪ በብር</label>
+            <input type="number" id="yensisat_mismar_wochid88" name="yesesatberet002" placeholder="የሚስማር ወጪ በብር.." value="0">
+            <label id="l66">የጉልበት ወጪ በብር</label>
+            <input type="number" id="yensisat_gulbet_wochid89" name="yesesatberet003" placeholder="የጉልበት ወጪ በብር.." value="0">
+            
+            <button type="button" onclick="calculate()">ይደምሩ</button>
+            <label id="yensisat_wochi_dimrd90" style="font-size: 30px; border: 2px;">የእንስሳት በረት የወቅቱ የግንባታ ወጭ በድምር
+              በብር:__</label>
+                <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+                <label id="lv020">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+                <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="yesesatberet004">
+                <label id="lv022">የባለይዞታው አይዲ</label>
+                <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="yesesatberet005">
+          </div>
+          <div data-role="collapsible">
+            <h1>የአጥርየእንስሳት በረት ጠቅላላ ድምር በብር </h1>
+            <button type="button" onclick="calculate()">ይደምሩ</button>
+            <label id="yeatir_yensisat_teklala_dimrd91" style="font-size: 30px; border: 2px;">የአጥርና የእንስሳት በረት ጠቅላላ
+              ድምር:__</label>
+          </div>
+        </div>
+
+        <div data-role="collapsible">
+          <h1>ተዘዋውሮ የሚተከል ንብረት ካሳ </h1>
+          <div data-role="collapsible">
+            <h1>የንብረቱ አይነት/ስም </h1>
+            <input type="text" id="nibretd92" name="nibretsim000" placeholder="እባክዎ የንብረቱን ስም/አይነት ያስገቡ !">
+          </div>
+          <div>
+            <label id="l67" style=" border: 2px;">የንብረት ማንሻ ወጪ በብር </label>
+            <input type="number" id="nmanishad93" name="nmanisha001" placeholder="የንብረት ማንሻ ወጪ በብር ያስገቡ!" value="0">
+            <label id="l68" style=" border: 2px;">ማጓጓዣ ወጪ በብር </label>
+            <input type="number" id="nmaguaguazad94" name="nmaguaguaza002" placeholder="ማጓጓዣ ወጪ በብር ያስገቡ!" value="0">
+            <label id="l69" style=" border: 2px;">መጫኛ ወጪ በብር </label>
+            <input type="number" id="nmechagnad95" name="nmechagna003" placeholder="መጫኛ ወጪ በብር ያስገቡ!" value="0">
+            <label id="l70" style=" border: 2px;">ማውረጃ ወጪ በብር</label>
+            <input type="number" id="mawurejad96" name="mawureja004" placeholder="ማውረጃ ወጪ በብር ያስገቡ!" value="0">
+            <label id="l71" style=" border: 2px;">መልሶ መትከያ ወጪ በብር </label>
+            <input type="number" id="nmetikeyad97" name="nmetikeya005" placeholder="መልሶ መትከያ ወጪ በብር ያስገቡ!" value="0">
+            <label id="l72" style=" border: 2px;">ለመቀጣጠያ ወጪ በብር </label>
+            <input type="number" id="nmeketateyad98" name="nmeketateya006" placeholder="ለመቀጣጠያ ወጪ በብር ያስገቡ!" value="0">
+            <label id="l73" style=" border: 2px;">የተጎዱ እቃዎች ወጭ በብር </label>
+            <input type="number" id="nyetegodud99" name="nyetegodu007" placeholder="የተጎዱ እቃዎች ወጭ በብር ያስገቡ!" value="0">
+            
+            <button type="button" onclick="calculate()">ይደምሩ</button>
+            <label id="tezewawuro_emitekelnibret_teklala_dimrd100" style="font-size: 20px; border: 2px;">ተዘዋውሮ የሚተከል ንብረት ወጪ
+              ጠቅላላ ድምር በብር :__</label>
+              <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+              <label id="lv021">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+              <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="dimr_masigebiya008">
+              <label id="lv023">የባለይዞታው አይዲ</label>
+              <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="owner_ID_1022">
+          </div>
+        </div>
+
+        <div data-role="collapsible">
+          <h1>የሰብል ካሳ </h1>
+          <div data-role="collapsible">
+            <h1>የሰብል አይነት </h1>
+            <div data-role="collapsible">
+              <h1>የመኅር </h1>
+              <input type="text" id="yemeherd101" name="yesebel001" placeholder="የመኅር ሰብሉን ስም ያስገቡ..">
+            </div>
+            <div data-role="collapsible">
+              <h1>የበልግ </h1>
+              <input type="text" id="yebelgd102" name="yesebel002" placeholder="የበልግ ሰብሉን ስም ያስገቡ..">
+              
+            </div>
+            <div data-role="collapsible">
+              <h1>የመስኖ </h1>
+              <input type="text" id="yemesinod103" name="yesebel003" placeholder="የመስኖ ሰብሉን ስም ያስገቡ..">
+            </div>
+            <div data-role="collapsible">
+              <h1>የቀሪ እርጥበት </h1>
+              <input type="text" id="keri_ertibetd104" name="yesebel004" placeholder="የቀሪ እርጥበት ሰብሉን ስም ያስገቡ..">
+              
+            </div>
+              <label id="029">የባለይዞታው አይዲ</label>
+              <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="yesebel005">
+          </div>
+          
+          <div data-role="collapsible">
+            <h1>የደረሰ ሰብል </h1>
+            <label id="l74" style=" border: 2px;">የመሰብሰቢያ ወጪ በብር </label>
+            <input type="number" id="yemesebsebiya_wochiid105" name="yederese_sebel001" placeholder="የመሰብሰቢያ ወጪ በብር.." value="0">
+            <label id="030">የባለይዞታው አይዲ</label>
+            <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="yederese_sebel002">
+          </div>
+          <div data-role="collapsible">
+            <h1>ያልደረሰ ሰብል </h1>
+              <div>
+              <label id="l75" style=" border: 2px;">የመሬት ስፋት በሄ/ር </label>
+              <input type="number" id="yemeriet_sifatd106" name="yalderese_sebel001" placeholder="የመሬት ስፋት በሄክታር ያስገቡ!" value="0">
+              <label id="l76" style=" border: 2px;">በአንድ ሄ/ር መሬት የሚገኝ ምርት በኩንታል </label>
+              <input type="number" id="yemigegn_mirt_bekuntald107" name="yalderese_sebel002"
+                placeholder="በአንድ ሄክታር መሬት የሚገኝ ምርት በኩንታል ያስገቡ!" value="0">
+              <label id="l77" style=" border: 2px;">የሰብለ የወቅቱ የአንድ ኩንታል የገበያ ዋጋ በብር </label>
+              <input type="number" id="yeand_kuntal_wagad108" name="yalderese_sebel003" placeholder="የወቅቱ የአንድ ኩንታል የገበያ ዋጋ በብር ያስገቡ!"
+                value="0">
+                  
+            </div>
+
+
+            <div data-role="collapsible">
+              <h1>የተረፈ ምርት </h1>
+              <label id="l78" style=" border: 2px;">የተረፈ ምርት አይነት </label>
+              <input type="text" id="terefe_mirt_aynettd109" name="yalderese_sebel004" placeholder="የተረፈ ምርት አይነት ያስገቡ!">
+              <label id="l79" style=" border: 2px;">የቦታ ስፋት በሄክታር </label>
+              <input type="number" id="yebota_sifattd110" name="yalderese_sebel005" placeholder="የቦታ ስፋት በሄክታር ያስገቡ!" value="0">
+              <label id="l80" style=" border: 2px;">በአንድ ሄክታር የሚገኝ ተረፈ ምርት በሸክም </label>
+              <input type="number" id="behektar_mirt_beshekmmd111" name="yalderese_sebel006"
+                placeholder="በአንድ ሄክታር የሚገኝ ተረፈ ምርት በሸክም ያስገቡ!" value="0">
+              <label id="l81" style=" border: 2px;">የሰብል ተረፈ ምርት በወቅታዊ ዋጋ በሸክም </label>
+              <input type="number" id="yeterefe_mirt_beshekmmd112" name="yalderese_sebel007"
+                placeholder="የሰብል ተረፈ ምርት በወቅታዊ ዋጋ በሸክም ያስገቡ!" value="0">
+              <label id="l82" style=" border: 2px;">የምርቱ ድግግሞሽ በአመት ውስጥ </label>
+              <input type="number" id="yemirt_digigmosh_beamettd113" name="yalderese_sebel008" placeholder="የምርቱ ድግግሞሽ በአመት ውስጥ ያስገቡ!"
+                value="0">
+                
+              <button type="button" onclick="calculate()">ይደምሩ</button>
+              <label id="yeterefe_mirt_teklala_dimrd114" style="font-size: 30px; border: 2px;">የተረፈ ምርት ድምር ዋጋ
+                በብር:__</label>
+            </div>
+            <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+            <label id="lv022">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+            <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="yalderese_sebel009">
+            <label id="lv024">የባለይዞታው አይዲ</label>
+            <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="yalderese_sebel010">
+          </div>
+          <div data-role="collapsible">
+            <h1>የሰብል ጠቅላላ ድምር በብር </h1>
+            <button type="button" onclick="calculate()">ይደምሩ</button>
+            <label id="yesebel_teklala_dimrd115" style="font-size: 30px; border: 2px;">የሰብል ጠቅላላ ድምር:__</label>
+          </div>
+        </div>
+
+
+        <div data-role="collapsible">
+          <h1>የቋሚ ተክል ካሳ </h1>
+          <div data-role="collapsible">
+            <h1>ፍሬ መስጠት የማይችል </h1>
+            <label id="l83" style=" border: 2px;"> ከፍተኛ ተክል ብዛት በቁጥር </label>
+            <input type="number" id="highd116" name="friemesitet_yemayichil001" placeholder="ከፍተኛ ተክል ብዛት በቁጥር.." value="0">
+            <label id="l84" style=" border: 2px;"> ወቅቱ የገበያ ዋጋ በብር </label>
+            <input type="number" id="waga1d117" name="friemesitet_yemayichil002" placeholder="የወቅቱ የገበያ ዋጋ በብር.." value="0">
+            <label id="l85" style=" border: 2px;"> መካከለኛ ተክል ብዛት በቁጥር </label>
+            <input type="number" id="mediumd118" name="friemesitet_yemayichil003" placeholder="መካከለኛ ተክል ብዛት በቁጥር.." value="0">
+            <label id="l86" style=" border: 2px;"> የወቅቱ የገበያ ዋጋ በብር </label>
+            <input type="number" id="waga2d119" name="friemesitet_yemayichil004" placeholder="የወቅቱ የገበያ ዋጋ በብር.." value="0">
+            <label id="l87" style=" border: 2px;"> ዝቅተኛ ተክል ብዛት በቁጥር </label>
+            <input type="number" id="lowd120" name="friemesitet_yemayichil005" placeholder="ዝቅተኛ ተክል ብዛት በቁጥር.." value="0">
+            <label id="l88" style=" border: 2px;">የወቅቱ የገበያ ዋጋ በብ </label>
+            <input type="number" id="waga3d121" name="friemesitet_yemayichil006" placeholder="የወቅቱ የገበያ ዋጋ በብር.." value="0">
+            
+            <button type="button" onclick="calculate()">ይደምሩ</button>
+            <label id="frie_mesitet_yemayichil_dimrd122" style="font-size: 30px; border: 2px;">ፍሬ መስጠት የማይችል ጠቅላላ ድምር:__
+            </label>
+            <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+            <label id="lv023">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+            <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="friemesitet_yemayichil007">
+            <label id="lv025">የባለይዞታው አይዲ</label>
+            <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="friemesitet_yemayichil008">
+          </div>
+          <div data-role="collapsible">
+            <h1>ባህርዛፍ </h1>
+            <label id="l89" style=" border: 2px;"> ዝቅተኛ ተፈላጭ ብዛት በቁጥር </label>
+            <input type="number" id="ziktegna_tefelachd123" name="bahirzaf001" placeholder="ዝቅተኛ ተፈላጭ ብዛት በቁጥር.." value="0">
+            <label id="l90" style=" border: 2px;">የወቅቱ የገበያ ዋጋ በብር </label>
+            <input type="number" id="yewektu_waga1d124" name="bahirzaf002" placeholder="የየወቅቱ የገበያ ዋጋ በብር.." value="0">
+            <label id="l91" style=" border: 2px;"> መካከለኛ ተፈላጭ ብዛት በቁጥር </label>
+            <input type="number" id="mekakelegna_tefelachd125" name="bahirzaf003" placeholder="መካከለኛ ተፈላጭ ብዛት በቁጥር.."
+              value="0">
+            <label id="l92" style=" border: 2px;"> የወቅቱ የገበያ ዋጋ በብር </label>
+            <input type="number" id="yewektu_waga2d126" name="bahirzaf004" placeholder="የወቅቱ የገበያ ዋጋ በብር.." value="0">
+            <label id="l93" style=" border: 2px;"> ከፍተኛ ተፈላጭ ብዛት በቁጥር </label>
+            <input type="number" id="keftegna_tefelachd127" name="bahirzaf005" placeholder="ከፍተኛ ተፈላጭ ብዛት በቁጥር.." value="0">
+            <label id="l94" style=" border: 2px;">የወቅቱ የገበያ ዋጋ በብር </label>
+            <input type="number" id="yewektu_waga3d128" name="bahirzaf006" placeholder="የወቅቱ የገበያ ዋጋ በብር.." value="0">
+            <label id="l95" style=" border: 2px;"> ቋሚ /አቋም ብዛት በቁጥር </label>
+            <input type="number" id="akuam_bizatd129" name="bahirzaf007" placeholder="ቋሚ /አቋም ብዛት በቁጥር.." value="0">
+            <label id="l96" style=" border: 2px;"> የወቅቱ የገበያ ዋጋ በብር </label>
+            <input type="number" id="yewektu_waga4d130" name="bahirzaf008" placeholder="የወቅቱ የገበያ ዋጋ በብር.." value="0">
+            <label id="l97" style=" border: 2px;"> የቆርቆሮ ማገር ብዛት በቁጥር </label>
+            <input type="number" id="korkoro_magerd131" name="bahirzaf009" placeholder="የቆርቆሮ ማገር ብዛት በቁጥር.." value="0">
+            <label id="l98" style=" border: 2px;">የወቅቱ የገበያ ዋጋ በብር </label>
+            <input type="number" id="yewektu_waga5d132" name="bahirzaf010" placeholder="የየወቅቱ የገበያ ዋጋ በብር.." value="0">
+            <label id="l99" style=" border: 2px;"> የዉጪ ማገር ብዛት በቁጥር </label>
+            <input type="number" id="yewuch_magerd133" name="bahirzaf011" placeholder="የዉጪ ማገር ብዛት በቁጥር.." value="0">
+            <label id="l100" style=" border: 2px;"> የወቅቱ የገበያ ዋጋ በብር </label>
+            <input type="number" id="yewektu_waga6d134" name="bahirzaf012" placeholder="የወቅቱ የገበያ ዋጋ በብር.." value="0">
+            <label id="l101" style=" border: 2px;"> የዉስጥ ማገር ብዛት በቁጥር </label>
+            <input type="number" id="yewust_magerd135" name="bahirzaf013" placeholder="የዉስጥ ማገር ብዛት በቁጥር.." value="0">
+            <label id="l102" style=" border: 2px;">የወቅቱ የገበያ ዋጋ በብ </label>
+            <input type="number" id="yewektu_waga7d136" name="bahirzaf014" placeholder="የወቅቱ የገበያ ዋጋ በብር.." value="0">
+            <label id="l103" style=" border: 2px;"> ጨፈቃ ብዛት በቁጥር </label>
+            <input type="number" id="chefeka_bizatd137" name="bahirzaf015" placeholder="ጨፈቃ ብዛት በቁጥር.." value="0">
+            <label id="l104" style=" border: 2px;"> የወቅቱ የገበያ ዋጋ በብር </label>
+            <input type="number" id="yewektu_waga8d138" name="bahirzaf016" placeholder="የወቅቱ የገበያ ዋጋ በብር.." value="0">
+            
+            <button type="button" onclick="calculate()">ይደምሩ</button>
+            <label id="bahirzaf_totald139"style="font-size: 30px; border: 2px;">የባህርዛፍ ድምር ዋጋ በብር:__ </label>
+            <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+            <label id="lv024">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+            <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="bahirzaf017">
+            <label id="lv026">የባለይዞታው አይዲ</label>
+            <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="bahirzaf018">
+          </div>
+          <div data-role="collapsible">
+            <h1>ፍሬ መስጠት የሚችል </h1>
+            <div data-role="collapsible">
+              <h1>ፍሬ መስጠት የጀመረ </h1>
+              <label id="l105" style=" border: 2px;"> በአንድ ሄክታር የሚገኝ የቋሚ ተክል ብዛት በቁጥር </label>
+              <input type="number" id="kuwami_tekel_bizatd140" name="friemesitet_yejemere001"
+                placeholder="በአንድ ሄክታር የሚገኝ የቋሚ ተክል ብዛት በቁጥር.." value="0">
+              <label id="l106" style=" border: 2px;"> አንድ ተክል በአመት የሚያስገኘው ምርት ብዛት በኪሎ ግራም/በኩንታል
+              </label>
+              <input type="number" id="mirt_bizatd141" name="friemesitet_yejemere002"
+                placeholder="አንድ ተክል በአመት የሚያስገኘው ምርት ብዛት በኪሎ ግራም/በኩንታል.." value="0">
+              <label id="l107" style=" border: 2px;"> የአንዱ ኩንታል/ኪሎ ግራም የወቅቱ ዋጋ በብር </label>
+              <input type="number" id="yeandu_wagad142" name="friemesitet_yejemere003" placeholder="የአንዱ ኩንታል/ኪሎ ግራም የወቅቱ ዋጋ በብር.."
+                value="0">
+              <label id="l108" style=" border: 2px;"> ተክሉን ለማሳደግ የወጣ ወጪ </label>
+              <input type="number" id="tekel_masadegiya_wochid143" name="friemesitet_yejemere004" placeholder="ተክሉን ለማሳደግ የወጣ ወጪ.."
+                value="0">
+               
+              <button type="button" onclick="calculate()">ይደምሩ</button>
+              <label id="frie_mesitet_yejemere_dimrd145" style="font-size: 30px; border: 2px;">ፍሬ መስጠት የጀመረ ድምር:__ </label>
+              <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+              <label id="lv025">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+              <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="friemesitet_yejemere006">
+              <label id="lv027">የባለይዞታው አይዲ</label>
+              <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="friemesitet_yejemere007">
+            </div>
+
+            <div data-role="collapsible">
+              <h1>ፍሬ መስጠት ያልጀመረ </h1>
+                <h1>የዕድገት ደረጃ </h1>
+                <label class="container">የአንድ አመት
+                  <input type="radio" value="የአንድ አመት" name="edget_radio">
+                </label>
+                <label class="container">የሁለት አመት
+                  <input type="radio" value="የሁለት አመት" name="edget_radio">
+                </label>
+                <label class="container">የሶስት አመት
+                  <input type="radio" value="የሶስት አመት" name="edget_radio">
+                </label>
+                <label class="container">የአራት አመት
+                  <input type="radio" value="የአራት አመት" name="edget_radio">
+                </label>
+
+                <button type="button" onclick="edget_dereja_js()">ያረጋግጡ</button>
+                <label id="l110" style="font-size: 30px; border: 2px;">የእድገት ደረጃ :__</label>
+              </div>
+              <label id="l111" style=" border: 2px;"> የተክል ብዛት በቁጥር/በእግር </label>
+              <input type="number" id="yetekel_bizatd146" name="friemesitet_yaljemere001" placeholder="የተክል ብዛት በቁጥር/በእግር.." value="0">
+              <label id="l112" style=" border: 2px;"> የአካባቢው የወቅቱ የተክሉ ዋጋ በብር </label>
+              <input type="number" id="yetekelu_wagad147" name="friemesitet_yaljemere002" placeholder="የአካባቢው የወቅቱ የተክሉ ዋጋ በብር.." value="0">
+              <label id="l113" style=" border: 2px;"> የጉልበትና የማቴሪያል ወጪ በብር </label>
+              <input type="number" id="yegulbet_wochid148" name="friemesitet_yaljemere003" placeholder="የጉልበትና የማቴሪያል ወጪ በብር.." value="0">
+              
+              <button type="button" onclick="calculate()">ይደምሩ</button>
+              <label id="frie_mesitet_yaljemere_dimrd150" style="font-size: 30px; border: 2px;">ፍሬ መስጠት ያልጀመረ ድምር:__
+              </label>
+              <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+              <label id="lv026">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+              <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="friemesitet_yaljemere005">
+              <label id="lv028">የባለይዞታው አይዲ</label>
+              <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="friemesitet_yaljemere006">
+      </div>
+          <div data-role="collapsible">
+            <h1>ቋሚ ተክል ጠቅላላ ድምር </h1>
+            <button type="button" onclick="calculate()">ይደምሩ</button>
+            <label id="kuwami_tekel_dimrd151" style="font-size: 30px; border: 2px;">ቋሚ ተክል ጠቅላላ ድምር:__ </label>
+          </div>
+        </div>
+     
+    
+        <div data-role="collapsible">
+          <h1>የሳር(ድርቆሽ) ካሳ </h1>
+          <label id="l115" style=" border: 2px;"> የመሬቱን አይነት </label>
+          <input type="text" id="dirkosh_merietd152" name="yesar001"
+            placeholder="የመሬቱን አይነት ያስገቡ(የግለሰብ፣የድርጅት፣የተቋም...)">
+          <label id="l116" style=" border: 2px;"> ሳሩ የሸፈነው ቦታ በሄክታር </label>
+          <input type="number" id="saru_yeshefenewd153" name="yesar002" placeholder="ሳሩ የሸፈነው ቦታ በሄክታር.." value="0">
+          <label id="l117" style=" border: 2px;"> በአንድ ሄክታር የሚሰበሰበው ሳር በሸክም/በቶን </label>
+          <input type="number" id="yesaru_bizatd154" name="yesar003" placeholder="በአንድ ሄክታር የሚሰበሰበው ሳር በሸክም.." value="0">
+          <label id="l118" style=" border: 2px;"> የአንድ ሸክም የሳር ምርት የወቅቱ የገበያ ዋጋ በብር </label>
+          <input type="number" id="yesaru_wagad155" name="yesar004" placeholder="የአንድ ሸክም የሳር ምርት የወቅቱ የገበያ ዋጋ በብር.."
+            value="0">
+          <label id="l120" style=" border: 2px;"> በአንድ አመት ውስጥ ያለው ድግግሞሽ በቁጥር </label>
+          <input type="number" id="digigimoshd157" name="yesar006" placeholder="በአንድ አመት ውስጥ ያለው ድግግሞሽ በቁጥር.." value="0">
+          
+          <button type="button" onclick="calculate()">ይደምሩ</button>
+          <label id="yesar_dirkosh_dimrd158" style="font-size: 30px; border: 2px;">የሳር/ድርቆሽ ድምር:__ </label>
+          <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+          <label id="lv027">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+          <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="yesar007">
+          <label id="lv029">የባለይዞታው አይዲ</label>
+          <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="yesar008">
+        </div>
+        <div data-role="collapsible">
+          <h1>የመካነ መቃብር ካሳ</h1>
+          <label id="l121" style=" border: 2px;"> የመካነ መቃብር አይነት/ስም </label>
+          <input type="text" id="mekabir_simd159" name="yemekane_mekabir001" placeholder="የመካነ መቃብር አይነት/ስም ያስገቡ!..">
+          <label id="l122" style=" border: 2px;"> የመካነ መቃብር ማንሻ ወጪ በብር </label>
+          <input type="number" id="manishad160" name="yemekane_mekabir002" placeholder="የመካነ መቃብር ማንሻ ወጪ በብር.." value="0">
+          <label id="l123" style=" border: 2px;"> የተለዋጭ ማረፊያ ቦታ ማዘጋጃ ወጪ በብር </label>
+          <input type="number" id="telewach_botad161" name="yemekane_mekabir003" placeholder="የተለዋጭ ማረፊያ ቦታ ማዘጋጃ ወጪ በብር.." value="0">
+          <label id="l124" style=" border: 2px;"> አጽሙን ለማዘዋዎሪያና ማሳረፊያ ወጪ በብር. </label>
+          <input type="number" id="mazewaworiad162" name="yemekane_mekabir004" placeholder="አጽሙን ለማዘዋዎሪያና ማሳረፊያ ወጪ በብር.." value="0">
+          <label id="l125" style=" border: 2px;"> ሀማኖታዊና ባህላዊ ስርዓት ማፈጸሚያ ወጪ በብር </label>
+          <input type="number" id="hayimanotawid163" name="yemekane_mekabir005" placeholder="ሀማኖታዊና ባህላዊ ስርዓት ማፈጸሚያ ወጪ በብር.."
+            value="0">
+            
+          <button type="button" onclick="calculate()">ይደምሩ</button>
+          <label id="yemekane_mekaber_dimrd164" style="font-size: 30px; border: 2px;">የመካነ መቃብር ድምር ወጪ:__ </label>
+          <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+          <label id="lv028">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+          <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="yemekane_mekabir006">
+          <label id="lv030">የባለይዞታው አይዲ</label>
+          <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="yemekane_mekabir007">
+        </div>
+
+        <div data-role="collapsible">
+          <h1>የውሃ ሀብት ካሳ </h1>
+           <label id="l126" style=" border: 2px;"> የውሃ ጉድጓድ የግንባታ ወጪ በብር </label> 
+          <input type="number" id="yewuha_gudgwadd165" name="yewuha_habit001" placeholder="የውሃ ጉድጓድ የግንባታ ወጪ በብር.." value="0">
+          <label id="l127" style=" border: 2px;"> የጎለበቱ ምንጮች የግንባታ ወጪ በብር </label>
+          <input type="number" id="yeminchid166" name="yewuha_habit002" placeholder="የጎለበቱ ምንጮች የግንባታ ወጪ በብር.." value="0">
+          <label id="l128" style=" border: 2px;"> የመስኖ የግንባታ ወጪ በብር </label>
+          <input type="number" id="yemesinod167" name="yewuha_habit003" placeholder="የመስኖ የግንባታ ወጪ በብር .." value="0">
+          <label id="l129" style=" border: 2px;"> የማፋሰሻ ቦዮች የግንባታ ወጪ በብር </label>
+          <input type="number" id="yemafaseshad168" name="yewuha_habit004" placeholder="የማፋሰሻ ቦዮች የግንባታ ወጪ በብር.." value="0">
+          <label id="l130" style=" border: 2px;"> የእርከን ስራዎች ወጪ በብር </label>
+          <input type="number" id="erikend169" name="yewuha_habit005" placeholder="የእርከን ስራዎች ወጪ በብር.." value="0">
+          
+          <button type="button" onclick="calculate()">ይደምሩ</button>
+          <label id="yewuha_habitna_afer_dimrd170" style="font-size: 30px; border: 2px;">የውሃ ሀብትና አፈር/እርከን ድምር:__ </label>
+          <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+          <label id="lv029">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+          <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="yewuha_habit006">
+          <label id="lv031">የባለይዞታው አይዲ</label>
+          <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="yewuha_habit007">
+        </div>
+        <div>
+        </div>
+          አጠቃላይ የንብረት ካሳ
+          <button type="button" onclick="calculate()">ይደምሩ</button>
+          <label id="yenbret_atekalay_dimird171" style="font-size: 30px; border: 2px;">አጠቃላይ የንብረት ካሳ:__</label>
+        </div>
+      </div>
+    <div data-role="main" class="ui-content">
+      <div data-role="collapsible">
+        <h1>የልማት ተነሽ </h1>
+        <div data-role="collapsible">
+          <h1>በጊዜያዊነት የሚለቀቅ </h1>
+          <label id="l131" style=" border: 2px;"> የሰብል ካሳ ገቢ በብር </label>
+          <input type="number" id="yesebel_kasad172" name="yelimat_tenesh001" placeholder="የሰብል ካሳ ገቢ በብር.." value="0">
+          <label id="l132" style=" border: 2px;"> ፍሬ መስጠት የጀመረ ተክል ካሳ ገቢ በብር </label>
+          <input type="number" id="frie_mesitet_yejemered173" name="yelimat_tenesh002" placeholder="ፍሬ መስጠት የጀመረ ተክል ካሳ ገቢ በብር.."
+            value="0">
+          <label id="l133" style=" border: 2px;"> ምጣኔ ሀብታዊ ገቢ የሚያስገኙ ተክሎች ካሳ ገቢ በብር </label>
+          <input type="number" id="mitanie_habitd174" name="yelimat_tenesh003" placeholder="ምጣኔ ሀብታዊ ገቢ የሚያስገኙ ተክሎች ካሳ ገቢ በብር.."
+            value="0">
+          <label id="l134" style=" border: 2px;"> ተረፈ ምርት ካሳ ገቢ በብር </label>
+          <input type="number" id="terefe_mirtd175" name="yelimat_tenesh004" placeholder="ተረፈ ምርት ካሳ ገቢ በብር.." value="0">
+          <label id="l135" style=" border: 2px;"> የጊዜ ርዝመት በቁጥር </label>
+          <input type="number" id="yegizie_rizmetd176" name="yelimat_tenesh005"min="0"max="14" placeholder="የጊዜ ርዝመት በቁጥር.." value="0">
+          <button type="button" onclick="calculate()">ይደምሩ</button>
+          <label id="begiziewinet_yemilekek_dimrd177" style="font-size: 30px; border: 2px;">በጊዜያዊነት የሚለቀቅ ድምር:__ </label>
+          <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+          <label id="lv030">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+          <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="yelimat_tenesh006">
+          <label id="lv032">የባለይዞታው አይዲ</label>
+          <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="yelimat_tenesh007">
+        </div>
+        <div data-role="collapsible">
+          <h1> በቋሚነት የሚለቀቅ </h1>
+          <button type="button" onclick="calculate()">ይደምሩ</button>
+          <label id="belmat_tenesh_yemilekek_dimrd179" style="font-size: 30px; border: 2px;">በቋሚነት የሚለቀቅ ድምር:__ </label>
+          <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+          <label id="lv034">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+          <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="bekuwaminet_tenesh001">
+          <label id="lv036">የባለይዞታው አይዲ</label>
+          <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="bekuwaminet_tenesh002">
+        </div>
+        <div data-role="collapsible">
+          <h1> በልማት ተነሽ የሚለቀቅ ጠቅላላ ድምር በብር </h1>
+          <button type="button" onclick="calculate()">ይደምሩ</button>
+          <label id="belmat_tenesh_yemilekek_dimrd179_$" style="font-size: 30px; border: 2px;">በልማት ተነሽ የሚለቀቅ ጠቅላላ ድምር በብር:__ </label>
+        </div>
+      </div>
+    </div>
+
+
+    <div data-role="main" class="ui-content">
+      <div data-role="collapsible">
+        <h1> የማሕበራዊ ትስስርና ስነ ልቡና ጉዳት ካሳ </h1>
+        <div data-role="collapsible">
+          <h1> የተፈናቀሉበት ርቀት</h1>
+          <label class="container"> ከ 5 ኪሎ ሜትር በታች
+            <input type="radio" value="ከ 5 ኪሎ ሜትር በታች" name="mahiberawi_radio001" default>
+          </label>
+          <label class="container"> ከ5 እስክ 6 ኪሎ ሜትር
+            <input type="radio" value="ከ 5 እስክ 6 ኪሎ ሜትር" name="mahiberawi_radio001">
+          </label>
+          <label class="container">ከ 7 እስክ 10 ኪሎ ሜትር
+            <input type="radio" value="ከ 7 እስክ 10 ኪሎ ሜትር" name="mahiberawi_radio001">
+          </label>
+          <label class="container"> ከ 10 ኪሎ ሜትር በላይ
+            <input type="radio" value="ከ 10 ኪሎ ሜትር በላይ" name="mahiberawi_radio001">
+          </label>
+          <label id="0041">የካሳ መጠን</label>
+          <input type="number" placeholder="የካሳ መጠን በብር ያስገቡ" name="mahiberawi_radio002" value="0">
+          <label id="041">የባለይዞታው አይዲ</label>
+          <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="mahiberawi_radio003">
+
+          <button type="button" onclick="diplay_mahiberawi()">ያረጋግጡ</button>
+          <label id="mahiberawiid180" style="font-size: 30px; border: 2px;"> የተፈናቀሉበት ርቀት </label>
+        </div>
+      </div>
+    </div>
+    <div data-role="main" class="ui-content">
+      <div data-role="collapsible">
+        <h1>የኢኮኖሚ ጉዳት</h1>
+        <input type="number" id="economyd181" name="yeeconomy_gudat001" placeholder="የኢኮኖሚ ጉዳት .." value="0">
+        <label id="042">የባለይዞታው አይዲ</label>
+        <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="yeeconomy_gudat002">
+      </div>
+    </div>
+    <div data-role="main" class="ui-content">
+      <div data-role="collapsible">
+        <h1>የመሬት ቋሚ ማሻሻያ ወጪ </h1>
+        <label id="l136"> የእርከን ክትር ርዝመት በሜትር ካሬ/ሜትር ኩብ </label>
+        <input type="number" id="yerken_erzimettd182" name="yekuwami_mashahsya001" placeholder="የእርከን ክትር ርዝመት በሜትር ወይም ሜትር ኩብ .."
+          value="0">
+        <label id="l137"> የአንድ ሜትር ካሬ/ሜትር ኩብ ዋጋ በብር </label>
+        <input type="number" id="yeand_erken_wagaad183" name="yekuwami_mashahsya002" placeholder="የአንድ ሜትር ካሬ/ሜትር ኩብ ዋጋ  በብር .."
+          value="0">
+        <label id="l138"> የጉልበት ወጪ በብር </label>
+        <input type="number" id="yerken_gulbet_wochiid184" name="yekuwami_mashahsya003" placeholder="የጉልበት ወጪ በብር .." value="0">
+       
+        <button type="button" onclick="calculate()">ይደምሩ</button>
+        <label id="yemeriet_mashashaya_wochid185" style="font-size: 30px; border: 2px;"> የመሬት ቋሚ ማሻሻያ ወጪ ድምር በብር :__
+        </label>
+          <h1>ዳታ ቤዝ ላይ ለማስቀመጥ(save) ለማድረግ ቀጣዩን ይሙሉ</h1>
+          <label id="lv031">ከላይ ያሰሉትን ድምር ያስገቡ</label>
+          <input type="number" placeholder="እባክዎን ድምሩን እዚህ ጋ ያስገቡ" name="yekuwami_mashahsya004">
+          <label id="lv033">የባለይዞታው አይዲ</label>
+          <input type="text" placeholder="እባክዎን የባለይዞታውን መለያ አይዲ ያስገቡ" name="yekuwami_mashahsya005">
+        </div>
+      </div>
+    
+
+
+      <div class="button">
+        <center>
+          <h1>አጠቃላይ የካሳ መጠን</h1>
+        </center>
+        <button type="button" onclick="calculate()"> ይደምሩ </button>
+        <label id="total_kasad186" style="font-size: 30px; border: 2px;">
+          <center> አጠቃላይ የካሳ መጠን:__</center>
+        </label>
+        <button type="button" onclick="window.print()" id="print">አትም </button><br>
+        <input type="submit" name="submit" value="ወደ ዳታቤዝ አስቀምጥ">
+      </div>
+  </div>
+</form>
+</body>
+
+</html>

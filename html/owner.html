@@ -1,0 +1,110 @@
+
+<?php
+echo"welcome";
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>የመሬት ባለይዞታዎች ገጽ </title>
+  <link rel="stylesheet" href="../css/owner.css">
+  <script src="../js/owner.js"></script>
+</head>
+<body>
+  <!--<button class="sign" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">ባለይዞታ መዝግብ </button>-->
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <form class="modal-content" action="../phps/owner.php" method="post">
+    <div class="container">
+     <center><h2>ባለ ይዞታውን ለመመዝገብ ይህን ቅጽ ይሙሉ</h2></center>
+     <label for="yebale_yizotaw_ID"><b>የባለይዞታው መለያ(አይዲ)</b></label>
+      <input type="text" placeholder="የባለይዞታው መለያ(አይዲ) ያስገቡ" name="yebale_yizotaw_ID" required>
+      <label for="sim_keneayat"><b>የባለይዞታ ስም ከነአያት</b></label>
+      <input type="text" placeholder="የአባዎራ ስም ከነአያት ያስገቡ" name="ow_fname" required>
+      <label for="psw"><b>ዕድሜ</b></label>
+      <input type="number" placeholder="ዕድሜ ያስገቡ" name="ow_age" required><br>
+      <label for="psw-repeat"><b>ስልክ ቁጥር</b></label>
+      <input type="number" placeholder="ስልክ ቁጥር ያስገቡ" name="ow_phone" required>
+      <label for="gender"><b>ፆታ</b> </label> &nbsp  &nbsp  &nbsp
+        <label class="container_radio">ወንድ
+          <input type="radio" name="ow_radio" value="ወ">
+        </label>
+        <label class="container_radio">ሴት
+          <input type="radio" name="ow_radio" value="ሴ">
+        </label> <br><br>
+      <label for="yetdar_agar_sim"><b>የትዳር አጋር ስም ከነአያት </b></label>
+      <input type="text" placeholder="የእማዎራ/የትዳር አጋር ስም ከነአያት ያስገቡ" name="ow_freind_name" required>
+      <label for="psw"><b>ዕድሜ</b></label>
+      <input type="number" placeholder="ዕድሜ ያስገቡ" name="ow_freind_age" required><br>
+      <label for="psw-repeat"><b>ስልክ ቁጥር</b></label>
+      <input type="number" placeholder="ስልክ ቁጥር ያስገቡ" name="ow_freind_phone" required>
+      <label for="gender"><b>ፆታ</b> </label>  &nbsp  &nbsp
+      <label class="container_radio">ወንድ
+        <input type="radio" name="owf_radio" value="ወ">
+      </label>
+      <label class="container_radio">ሴት
+        <input type="radio" name="owf_radio" value="ሴ">
+      </label>
+    
+    <br> <br>
+    <label for="email"><b>የባለይዞታው የባንክ ሂስብ ቁጥር </b></label>
+    <input type="number" placeholder="የባለይዞታውን የባንክ ሂስብ ቁጥር ያስገቡ " name="ow_bank_no" required>
+    <label for="email"><b>የቀበሌ ነዋሪነት መታወቂያ </b></label> &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="file" placeholder="የቀበሌ ነዋሪነት መታወቂያ ምስል ያስገቡ " name="ow_idcard" required><br>
+    <br>
+     <center>  <label for="psw"><b>አድራሻ</b></label></center>
+      <div class="adrasha">
+      <label for="region">ክልል </label>
+      <input type="text" placeholder="ክልል ያስገቡ " name="ow_region" required>
+      <label for="zone">ዞን </label>
+      <input type="text" placeholder="ዞን ያስገቡ " name="ow_zone" required>
+      <label for="wereda">ወረዳ </label>
+      <input type="text" placeholder="ወረዳ ያስገቡ " name="ow_wereda" required>
+      <label for="kebele">ቀበሌ </label>
+      <input type="text" placeholder="ቀበሌ ያስገቡ " name="ow_kebele" required>
+      <label for="sub_kebele">ንኡስ ቀበሌ </label>
+      <input type="text" placeholder="ንኡስ ቀበሌ ያስገቡ " name="ow_nuskebele" required>
+      <label for="got">ጎጥ </label>
+      <input type="text" placeholder="ጎጥ ያስገቡ " name="ow_got" required>
+    </div>
+    <center> <label for="psw"><b>የመሬት መረጃ  </b></label> </center>
+    <div class="land_info">
+      <label for="got">የመሬት መጠን በሄክታር </label>
+      <input type="text" placeholder="የመሬት መጠን በሄክታር " name="ow_land_area" required>
+      <label for="got">የመሬትቱ የይዞታ መለያ ቁጥር  </label>
+      <input type="text" placeholder="የመሬትቱ የይዞታ መለያ ቁጥር ያስገቡ " name="ow_land_id" required>
+      <label for="got">የመሬት ማዕከላዊ ኮርዲኔት </label>
+      <input type="text" placeholder=" X ኮርዲኔት " name="ow_land_xcoordinet" required>
+      <input type="text" placeholder=" Y ኮርዲኔት " name="ow_land_ycoordinet" required>
+      <label for="got">የመሬት አጠቃቀም  </label>
+      <input type="text" placeholder="የመሬት አጠቃቀም ሁኔታ ያስገቡ " name="ow_land_usage" required>
+      <label for="got">የይዞታ አይነት </label>
+      <input type="text" placeholder="የይዞታ አይነት ያስገቡ " name="ow_land_type" required>
+      <label for="got">የተወሰደው መሬት ካርታ   </label>
+      <input type="file" placeholder="የተወሰደው መሬት ካርታ ያስገቡ " name="ow_land_photo" required>
+      
+      <br>
+      
+     <center> <label for="got"> <b> የመሬት አዋሳኝ</b>  </label> </center>
+      <div class="awasagn">
+      <input type="text" placeholder="የምስራቅ አዋሳኝ" name="ow_land_east" required>
+      <input type="text" placeholder="የምዕራብ አዋሳኝ" name="ow_land_west" required>
+      <input type="text" placeholder="የሰሜን አዋሳኝ" name="ow_land_north" required>
+      <input type="text" placeholder="የደቡብ አዋሳኝ" name="ow_land_south" required>
+    </div>
+     <label for="lname"><b> የተመዘገበበት ቀን </b></label>&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="date" placeholder="የተመዘገበበት ቀን" name="ow_reg_date" required>
+    </div>
+  
+      <div class="clearfix">
+        <button type="submit" name="register" class="signupbtn">መዝግብ </button>
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">ሰርዝ</button>
+      </div>
+    </div>
+  </form>
+</div>
+  
+</body>
+</html>

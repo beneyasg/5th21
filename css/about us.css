@@ -1,0 +1,85 @@
+body{
+    background-image: url('../images/background.png');
+    position: relative;
+    left: 0px;
+    top: 0px;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-bottom:1%;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+  }
+  *{
+      margin: 0%;
+      padding: 0%;
+      box-sizing: border-box;
+  }
+  
+  .about_us{
+      
+     background-color: lightgrey;
+     border: 1px solid black;
+     border-radius: 10px;
+     box-shadow: 0 0 10px;
+     margin-top:30px;
+     margin-left: 10px;
+     margin-right: 10px;
+     margin-bottom: 10px;
+     padding: 10px 10px;
+     font-size: 30px;
+   color: black;
+      
+  }
+  h1{
+      text-align: center;
+  }
+  .mission_vision{
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      font-size: 35px;
+  }
+  
+  h2{
+      text-align: center;
+      padding-left: 20%;
+      
+  }
+  #about{
+      list-style-type:none;
+      display: flex;
+      flex-direction: column;
+      background-color: beige;
+      color: blue;
+  }
+  #about li{
+      text-align: center;
+  }
+  #service{
+      margin-bottom: 40px;
+      font-size: 35px;
+  }
+  #value{
+  padding-left: 20%;
+  }
+  .values{
+      padding-left: 40%;
+      align-items: center;
+  }
+  .about_usfooter{
+    background-color:#060805;
+    align-items: center;
+    padding-left: 50%;
+    
+    }
+ #bot_footer,#bottor_footer{
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    margin-bottom: 0%;
+    padding-bottom: 3%;
+    color: white;
+
+ }

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>የዳይሬክተሮች ገጽ </title>
+  <link rel="stylesheet" href="../css/director.css">
+  <script src="../js/estimator_committee.js"></script>
+</head>
+<body>
+
+<!--<button class="gemachich" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">ዳይሬክተሮችን መዝግብ </button>-->
+
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <form class="modal-content" action="../phps/director.php" method="post">
+    <div class="container">
+      <center> <h1> ዳይሬክተሮችን ለመመዝገብ ይህን ቅጽ ይሙሉ  </h1></center>
+      <label for="lname"><b>ስም ከነአያት</b></label>
+      <input type="text" placeholder="ሙሉ ስም ያስገቡ" name="dr_fname" required>
+      <label for="lname"><b>ዕድሜ</b></label>
+      <input type="number" placeholder="ዕድሜ ያስገቡ" name="dr_age" required><br>
+      <label for="lname"><b>ፆታ</b> </label> 
+      <label for="wend"><b>ወንድ</b></label>
+      <input type="radio" name="dr_radio" value="ወ">
+      <label for="set"><b>ሴት</b></label>
+      <input type="radio" name="dr_radio" value="ሴ">
+       <br><br>
+      <label for="lname"><b>ዜግነት</b></label>
+      <input type="text" placeholder="ዜግነት ያስገቡ" name="dr_nationality" required>
+
+      <label for="lname"><b>መለያ ስም</b></label>
+      <input type="text" placeholder="መለያ ስም ያስገቡ" name="dr_username" required>
+
+      <label for="lname"><b>የይለፍ ቃል</b></label>
+      <input type="password" placeholder="የይለፍ ቃል ያስገቡ" name="dr_password" required>
+      <label for="lname"><b>ኢሜይል</b></label>
+      <input type="email" placeholder="ኢሜይል ያስገቡ" name="dr_email" required>
+      <label for="lname"><b>አድራሻ</b></label>
+      <input type="text" placeholder="አድራሻ ያስገቡ" name="dr_address" required>
+
+      <label for="lname"><b>የቢሮ ቁጥር </b></label>
+      <input type="text" placeholder="የአባላቶች ብዛት " name="dr_o_number" required>
+      
+      <label for="lname"><b>ስልክ ቁጥር  </b></label>
+      <input type="number" placeholder="ስልክ ቁጥር ያስገቡ" name="dr_phone" required>
+      <div class="clearfix">
+        <button type="submit" name="register" class="signupbtn">መዝግብ </button>
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">ሰርዝ</button>
+       
+      </div>
+    </div>
+  </form>
+</div>
+  
+</body>
+</html>
